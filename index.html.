@@ -75,6 +75,7 @@ footer {
 </header>
 
 <div class="gallery">
+  <img src="b103f902-8b99-4449-861c-fad8776b61d3.jpg" onclick="openPhoto(this)">
   <img src="https://picsum.photos/id/1011/600/600" onclick="openPhoto(this)">
   <img src="https://picsum.photos/id/1015/600/600" onclick="openPhoto(this)">
   <img src="https://picsum.photos/id/1016/600/600" onclick="openPhoto(this)">
