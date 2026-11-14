@@ -5,61 +5,86 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Gallery</title>
+
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background: #101014;
   color: white;
   font-family: Arial, sans-serif;
 }
+
 header {
   text-align: center;
   padding: 55px 20px 30px;
 }
+
 header h1 {
   font-size: 38px;
   margin-bottom: 10px;
 }
-header p { color: #999; }
+
+header p {
+  color: #999;
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
+  gap: 18px;
   padding: 20px;
   max-width: 1200px;
   margin: auto;
 }
+
+.photo {
+  overflow: hidden;
+  border-radius: 12px;
+  background: #1c1c24;
+}
+
 .gallery img {
+  display: block;
   width: 100%;
   height: 280px;
   object-fit: cover;
-  border-radius: 12px;
   cursor: pointer;
-  transition: .3s;
+  transition: transform .3s;
 }
-.gallery img:hover { transform: scale(1.03); }
+
+.gallery img:hover {
+  transform: scale(1.04);
+}
+
 #viewer {
   display: none;
   position: fixed;
   inset: 0;
-  background: #000e;
+  background: rgba(0,0,0,.92);
   justify-content: center;
   align-items: center;
   padding: 20px;
+  z-index: 10;
 }
+
 #viewer img {
   max-width: 95%;
   max-height: 90%;
   object-fit: contain;
 }
+
 #viewer span {
   position: absolute;
   top: 20px;
   right: 30px;
-  font-size: 35px;
+  font-size: 40px;
   cursor: pointer;
 }
+
 footer {
   text-align: center;
   color: #666;
@@ -67,6 +92,7 @@ footer {
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -75,18 +101,47 @@ footer {
 </header>
 
 <div class="gallery">
-  <img src="b103f902-8b99-4449-861c-fad8776b61d3.jpg" onclick="openPhoto(this)">
-  <img src="https://picsum.photos/id/1011/600/600" onclick="openPhoto(this)">
-  <img src="https://picsum.photos/id/1015/600/600" onclick="openPhoto(this)">
-  <img src="https://picsum.photos/id/1016/600/600" onclick="openPhoto(this)">
-  <img src="https://picsum.photos/id/1025/600/600" onclick="openPhoto(this)">
-  <img src="https://picsum.photos/id/1035/600/600" onclick="openPhoto(this)">
-  <img src="https://picsum.photos/id/1043/600/600" onclick="openPhoto(this)">
+
+  <div class="photo">
+    <img src="b103f902-8b99-4449-861c-fad8776b61d3.jpg"
+         alt="My photo" onclick="openPhoto(this)">
+  </div>
+
+  <div class="photo">
+    <img src="https://picsum.photos/id/1011/600/600"
+         alt="Gallery photo" onclick="openPhoto(this)">
+  </div>
+
+  <div class="photo">
+    <img src="https://picsum.photos/id/1015/600/600"
+         alt="Gallery photo" onclick="openPhoto(this)">
+  </div>
+
+  <div class="photo">
+    <img src="https://picsum.photos/id/1016/600/600"
+         alt="Gallery photo" onclick="openPhoto(this)">
+  </div>
+
+  <div class="photo">
+    <img src="https://picsum.photos/id/1025/600/600"
+         alt="Gallery photo" onclick="openPhoto(this)">
+  </div>
+
+  <div class="photo">
+    <img src="https://picsum.photos/id/1035/600/600"
+         alt="Gallery photo" onclick="openPhoto(this)">
+  </div>
+
+  <div class="photo">
+    <img src="https://picsum.photos/id/1043/600/600"
+         alt="Gallery photo" onclick="openPhoto(this)">
+  </div>
+
 </div>
 
 <div id="viewer" onclick="closePhoto()">
   <span>&times;</span>
-  <img id="bigPhoto">
+  <img id="bigPhoto" alt="Enlarged photo">
 </div>
 
 <footer>© 2026 My Gallery</footer>
@@ -96,6 +151,7 @@ function openPhoto(img) {
   document.getElementById('bigPhoto').src = img.src;
   document.getElementById('viewer').style.display = 'flex';
 }
+
 function closePhoto() {
   document.getElementById('viewer').style.display = 'none';
 }
